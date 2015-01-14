@@ -1,0 +1,3 @@
+== SAMPLE_APP...
+
+from Hartl's rails tutorial
