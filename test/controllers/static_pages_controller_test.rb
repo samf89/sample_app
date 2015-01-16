@@ -28,7 +28,7 @@ class StaticPagesControllerTest < ActionController::TestCase
 
   test "home title should contain home" do
     get :home
-    assert_select "title", "Home | #{@base_title}"
+    assert_select "title", "#{@base_title}"
   end
 
   test "about title should contain about" do
@@ -44,11 +44,6 @@ class StaticPagesControllerTest < ActionController::TestCase
   test "contact title" do
     get :contact
     assert_select "title", "Contact | #{@base_title}"
-  end
-
-  test "this test should fail" do
-    get :not_there
-    assert :success
   end
 
 end
