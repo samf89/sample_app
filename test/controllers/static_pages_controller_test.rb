@@ -2,9 +2,7 @@ require 'test_helper'
 
 class StaticPagesControllerTest < ActionController::TestCase
 
-  def setup
-    @base_title = "Ruby on Rails Tutorial Sample App"
-  end
+  setup :set_base_title
 
   test "should get home" do
     get :home
@@ -46,4 +44,9 @@ class StaticPagesControllerTest < ActionController::TestCase
     assert_select "title", "Contact | #{@base_title}"
   end
 
+  private
+    def set_base_title
+      @base_title = "Ruby on Rails Tutorial Sample App"
+    end
+    
 end
