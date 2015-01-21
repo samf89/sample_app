@@ -24,9 +24,16 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params_for_user)
+      # handle a successful update in here
+    else
+      render 'edit'
+    end
   end
 
   def destroy

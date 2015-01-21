@@ -1,0 +1,31 @@
+<% provide(:title, "Edit") %>
+<%= content_tag :h1, "Update your profile" %>
+
+<%= content_tag :div, class: "row" do %>
+  <%= content_tag :div, class: "col-md-6 col-md-offset-3" do %>
+    <%= form_for(@user) do |f| %>
+      
+      <%= render partial: 'shared/error_messages', :locals => {:object => @user} %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmaton, class: "form-control" %>
+
+      <%= f.submit "Save Changes", class: "btn btn-primary" %>
+    <% end %>
+    <%= content_tag :br %>
+    <%= content_tag :div, class: "gravatar_edit" do %>
+      <%= gravatar_for @user %>
+      <%= link_to "change", "http://gravatar.com/emails", target: '_blank' %>
+    <% end %>
+  <% end %>
+<% end %>
+    
