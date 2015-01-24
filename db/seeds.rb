@@ -6,7 +6,9 @@ User.create!( name: "Example User",
               email: "example@railstutorial.org",
               password: '123456',
               password_confirmation: '123456',
-              admin: true )
+              admin: true,
+              activated: true,
+              activated_at: Time.now )
 
 puts "Creating the other 99 users"
 99.times do |n|
@@ -16,5 +18,7 @@ puts "Creating the other 99 users"
   User.create!( name: name, 
                 email: email,
                 password: password,
-                password_confirmation: password )
+                password_confirmation: password,
+                activated: true,
+                activated_at: Time.now  )
 end
