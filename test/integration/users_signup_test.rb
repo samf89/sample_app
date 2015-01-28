@@ -42,18 +42,16 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get edit_account_activation_path("invalid token")
     assert_not is_logged_in?
     # valid token wrong email
-    get edit_account_activation_path(user.activation_token, email: 'user@example.com')
+    get edit_account_activation_path(user.activation_token, email: 'wrong_email@email.com')
     assert !is_logged_in?
     # valid activation token and correct email
-#    assert user.activation_token, "User has an activation token"
-#    puts user.activation_token
-#    puts user.activation_digest
-#    puts user.authenticated?(:activation, user.activation_token)
-#    get edit_account_activation_path(user.activation_token, email: user.email)
-#    assert user.reload.activated?, "The user should be activated"
-#    follow_redirect!
-#    assert_template 'users/show'
-#    assert is_logged_in?
+    assert user.activation_token, "User has an activation token, #{user.activation_token}"
+    puts user.authenticated?(:activation, user.activation_token)
+    get edit_account_activation_path(user.activation_token, email: 'user@example.com')
+    assert user.reload.activated?, "The user should be activated"
+    follow_redirect!
+    assert_template 'users/show'
+    assert is_logged_in?
   end
 
 
