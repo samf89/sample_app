@@ -24,19 +24,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
   end
 
-#  test "valid user signup" do
-#    get signup_path
-#    assert_difference 'User.count', 1 do 
-#      post_via_redirect users_path, user: { name: "Test",
-#                               email: "test@email.com",
-#                               password: "foobar",
-#                               password_confirmation: "foobar" }
-#       end
-#    assert_template 'users/show'
-#    assert is_logged_in?
-#    assert_not_nil flash
-#  end
-
   test "valid signup with account activation" do
     get signup_path
     assert_difference 'User.count', 1 do 
@@ -55,7 +42,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     get edit_account_activation_path("invalid token")
     assert_not is_logged_in?
     # valid token wrong email
-    get edit_account_activation_path(user.activation_token, email: 'wrong')
+    get edit_account_activation_path(user.activation_token, email: 'user@example.com')
     assert !is_logged_in?
     # valid activation token and correct email
 #    assert user.activation_token, "User has an activation token"
