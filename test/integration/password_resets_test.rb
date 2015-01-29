@@ -50,5 +50,21 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_redirected_to user
   end
+
+  test "expired password reset token" do
+    get new_password_reset_path
+    assert_template 'password_resets/new'
+    post password_resets_path, password_reset: { email: @user.email }
+    @user = assigns(:user)
+    # Set the time the link was sent to be three hours ago
+    @user.update_attribute(:reset_sent_at, 3.hours.ago)
+    # Send patch with valid information
+    patch password_reset_path(@user.reset_token), email: @user.email, user: { password: "foobaz", password_confirmation: "foobaz" }
+    assert_response :redirect
+    follow_redirect!
+    # Test that the html body contains the work expired
+    assert_not flash.empty?
+    assert_match /expired/, response.body
+  end
     
 end

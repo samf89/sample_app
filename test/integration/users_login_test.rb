@@ -39,6 +39,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   private
     def user
       @user = users(:test_user_one)
+      @non_active_user = users(:not_activated_user)
     end
 
 end

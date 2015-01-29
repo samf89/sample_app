@@ -52,3 +52,13 @@ user_<%= n %>:
   activated: true
   activated_at: <%= Time.now %>
 <% end %>
+
+not_activated_user:
+  name: Lazy User
+  email: lazy@email.com
+  password_digest: <%= User.digest('password') %>
+  activated: false
+
+
+
+
