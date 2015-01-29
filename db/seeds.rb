@@ -22,3 +22,10 @@ puts "Creating the other 99 users"
                 activated: true,
                 activated_at: Time.now  )
 end
+
+puts "Creating microposts for the first 6 users"
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create!(content: content) }
+end

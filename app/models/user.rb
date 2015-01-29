@@ -13,11 +13,13 @@
 #  activation_digest :string
 #  activated         :boolean          default("f")
 #  activated_at      :datetime
+#  reset_digest      :string
+#  reset_sent_at     :datetime
 #
 
 class User < ActiveRecord::Base
 
-  attr_accessor :remember_token, :activation_token, :reset_token
+  has_many :microposts, dependent: :destroy
   before_save :downcase_email
   before_create :create_activation_digest
   validates :name, presence: true, length: { maximum: 50 }
@@ -26,6 +28,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }, allow_blank: true
   has_secure_password
+  attr_accessor :remember_token, :activation_token, :reset_token
 
   class << self
     def digest(string)

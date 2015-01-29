@@ -13,6 +13,8 @@
 #  activation_digest :string
 #  activated         :boolean          default("f")
 #  activated_at      :datetime
+#  reset_digest      :string
+#  reset_sent_at     :datetime
 #
 
 test_user_one: 
@@ -58,7 +60,3 @@ not_activated_user:
   email: lazy@email.com
   password_digest: <%= User.digest('password') %>
   activated: false
-
-
-
-
