@@ -46,7 +46,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert !is_logged_in?
     # valid activation token and correct email
     assert user.activation_token, "User has an activation token, #{user.activation_token}"
-    puts user.authenticated?(:activation, user.activation_token)
     get edit_account_activation_path(user.activation_token, email: 'user@example.com')
     assert user.reload.activated?, "The user should be activated"
     follow_redirect!
