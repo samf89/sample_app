@@ -37,3 +37,23 @@ micropost-<%= n %>:
   created_at: <%= 42.days.ago %>
   user: test_user_one
 <% end %>
+
+ants: 
+  content: "this is something about ants"
+  created_at: <%= 2.years.ago %>
+  user: archer
+
+zone: 
+  content: "this is something about a zone"
+  created_at: <%= 3.days.ago %>
+  user: archer
+
+tone: 
+  content: "danger zone"
+  created_at: <%= 10.minutes.ago %>
+  user: lana
+
+van: 
+  content: "this is something about a van"
+  created_at: <%= 4.hours.ago %>
+  user: lana
