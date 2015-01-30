@@ -1,0 +1,9 @@
+<div class="center jumbotron">
+  <%= content_tag(:h1, "Welcome to the Sample App") %>
+
+  <h2>This is the home page for the <%= link_to "Ruby on Rails Tutorial", "http://www.railstutorial.org/" %> sample application</h2>
+
+  <%= link_to "Sign up now", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("rails.png", alt: "Rails Logo"), "http://rubyonrails.org/" %>
