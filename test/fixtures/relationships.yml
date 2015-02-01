@@ -9,3 +9,18 @@
 #  updated_at  :datetime         not null
 #
 
+one: 
+  follower: test_user_one
+  followed: lana
+
+two: 
+  follower: test_user_one
+  followed: mallory
+
+three:
+  follower: lana
+  followed: test_user_one
+
+four:
+  follower: archer
+  followed: test_user_one
