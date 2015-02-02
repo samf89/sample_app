@@ -54,4 +54,12 @@ class FollowingTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "feed on Home page" do
+    get root_path
+    @user.feed.paginate(page: 1).each do |micropost|
+      # Check that the micropost appears on the home page
+      assert_match micropost.content, response.body
+    end
+  end
+
 end
